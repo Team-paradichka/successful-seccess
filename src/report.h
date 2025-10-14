@@ -3,6 +3,9 @@
 
 extern StudentDatabase db;
 
+// TODO: Task 10 Print student Average
+void printStudentAverage();
+
 // Файл який містить функції які відносяться до звітів
 // Тут ви оголошуєте функції які будуть використовуватись для створення звітів
 // Приклад оголошення функції void GenerateReport();
