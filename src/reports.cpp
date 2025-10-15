@@ -2,10 +2,20 @@
 
 using namespace std;
 
-// Реалізація функцій які відносяться до звітів буде тут
-// Наприклад, реалізація функції GenerateReport()
-// void GenerateReport() {
-//     std::cout << "Report generated!" << std::endl;
-// };
-// зауважте що тип який повертає функція, аргументи які вона приймає, і її імʼя мають відповідати оголошенню в report.h
+double calculateAverageScore(const std::vector<Subject>& subjects) {
+    double sum = 0.0;
+    int count = 0;
 
+    for (const auto& subject : subjects) {
+        for (int score : subject.scores) {
+            sum += score;
+            count++;
+        }
+    }
+
+    if (count == 0) {
+        return 0;
+    }
+
+    return sum / count;
+}
