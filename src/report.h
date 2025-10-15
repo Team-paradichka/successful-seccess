@@ -25,3 +25,5 @@ extern StudentDatabase db;
 //TODO Task 13 Find And Print Honor Students List
 
 //TODO Task 14 Find And Print Expulsion List
+void printExpulsionList();
+
