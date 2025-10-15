@@ -13,7 +13,7 @@ extern StudentDatabase db;
 //TODO: Task 2 Student Menu
 
 //TODO: Task 3 Teacher Menu
-
+void showTeacherMenu()
 //TODO: Task 4 Add student Menu
 
 //TODO: Task 5 Add score Menu
