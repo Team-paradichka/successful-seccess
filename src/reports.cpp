@@ -1,4 +1,5 @@
 #include "report.h"
+
 using namespace std;
 
 // Реалізація функцій які відносяться до звітів буде тут
