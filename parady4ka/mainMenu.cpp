@@ -1,8 +1,9 @@
 #include <iostream>
+#include "ui.h"
 
 using namespace std;
 
-void mainMenu()
+void main_menu()
 {
     cout << "Welcome to ProStudentHelper!\nTo continue please choose one of the following options:" << endl;
     cout << "1 - Continue as a student\n2 - Continue as a teacher\n0 - Quit the program" << endl;
@@ -11,14 +12,14 @@ void mainMenu()
     switch(roleChoice)
     {
         case 1:
-            //перехід у меню студента
+            studentMenu();
         case 2:
-            //перехід у меню викладача
+            showTeacherMenu();
         case 0:
             abort();
         default:
             cout << "Please, choose an apropriate option." << endl;
-            mainMenu();
+            main_menu();
     }
     
 }
