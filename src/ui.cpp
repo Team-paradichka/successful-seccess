@@ -1,5 +1,3 @@
-#include "db.h"
-#include "report.h"
 #include "ui.h"
 #include <iostream>
 #include <string>
@@ -27,6 +25,38 @@ Student* findStudentByName(const string& name) {
     return nullptr;
 }
 
+void showMainMenu() {
+    while (true) {
+        cout << "\n=== STUDENT MANAGEMENT SYSTEM ===\n";
+        cout << "1. Add Student\n";
+        cout << "2. Add Score to Student\n"; 
+        cout << "3. List All Students\n";
+        cout << "0. Exit\n";
+        cout << "Choose an option: ";
+
+        int choice;
+        cin >> choice;
+        cin.ignore();
+
+        switch (choice) {
+            case 1:
+                addStudentMenu();
+                break;
+            case 2:
+                addScoreMenu();
+                break;
+            case 3:
+                listStudentsMenu();
+                break;
+            case 0:
+                cout << "Goodbye!\n";
+                return;
+            default:
+                cout << "Invalid option! Please try again.\n";
+        }
+    }
+}
+
 void addStudentMenu() {
     cout << "--- Add New Student ---\n";
     string name;
@@ -52,7 +82,6 @@ void addScoreMenu() {
         return;
     }
 
-    // Якщо у студента немає предметів, додаємо стандартні
     if (s->subjects.empty()) {
         s->subjects.push_back({"Mathematics"});
         s->subjects.push_back({"Physics"});
@@ -108,40 +137,4 @@ void listStudentsMenu() {
         }
         cout << "------------------------\n";
     }
-}
-
-void showMainMenu() {
-    while (true) {
-        cout << "\n=== STUDENT MANAGEMENT SYSTEM ===\n";
-        cout << "1. Add Student\n";
-        cout << "2. Add Score to Student\n"; 
-        cout << "3. List All Students\n";
-        cout << "0. Exit\n";
-        cout << "Choose an option: ";
-
-        int choice;
-        cin >> choice;
-        cin.ignore();
-
-        switch (choice) {
-            case 1:
-                addStudentMenu();
-                break;
-            case 2:
-                addScoreMenu();
-                break;
-            case 3:
-                listStudentsMenu();
-                break;
-            case 0:
-                cout << "Goodbye!\n";
-                return;
-            default:
-                cout << "Invalid option! Please try again.\n";
-        }
-    }
-}
-int main() {
-    showMainMenu();
-    return 0;
 }

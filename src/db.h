@@ -27,3 +27,4 @@ public:
     Student* findStudentByName(const std::string& name);
     const std::vector<Student>& getAllStudents() const;
 };
+extern StudentDatabase db;
