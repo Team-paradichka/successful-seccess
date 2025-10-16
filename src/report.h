@@ -8,6 +8,12 @@ extern StudentDatabase db;
 // Приклад оголошення функції void GenerateReport();
 // Зауважте що реалізація цих функцій буде в окремому файлі src/report.cpp
 
+
+
+//TODO Task 2 Print grades of any student
+void printStudentScores(StudentDatabase& db, const std::string& studentName);
+
+
 //TODO Task 5 Print My Grades
 
 //TODO: Task 6 Print student Grades
