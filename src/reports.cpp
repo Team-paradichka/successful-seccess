@@ -5,8 +5,6 @@ using namespace std;
 
 extern StudentDatabase db;
 
-double calculateAverageScore(const std::vector<Subject>& subjects);
-
 void printExpulsionList() {
     vector<Student> expulsion_candidates;
 
