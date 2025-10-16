@@ -19,17 +19,17 @@ void studentMenu() {
         std::cout << "0 - Back to main menu\n";
         std::cin >> choise;
         if (choise == 1) {
-            //showStudentGrade();  P.s: Зняти коментар коли функція буде готова
+            printMyGrades();
         }
         else if (choise == 2) {  
-            //AddScore();   P.s: Зняти коментар коли функція буде готова
+            AddScore();
         }
         else if (choise == 0) {
-            //mainMenu();   P.s: Зняти коментар коли функція буде готова
+            mainMenu();
             break;
         }
         else { 
-            std::cout << "Choose a valid option...\n";
+            std::cout << "Choose a valid option.\n";
         }
     } while (choise != 0); //Цикл працює поки користувач не вийде в меню входу
     
