@@ -1,5 +1,4 @@
 #include "report.h"
-#include <iostream>
 
 using namespace std;
 
@@ -10,12 +9,3 @@ using namespace std;
 // };
 // зауважте що тип який повертає функція, аргументи які вона приймає, і її імʼя мають відповідати оголошенню в report.h
 
-void printMyGrades() {
-    cout << "My Grades function - to be implemented\n";
-}
-
-void printStudentGrades() {
-    cout << "Student Grades function - to be implemented\n";
-}
-
-// ... інші функції звітів будуть реалізовані тут
