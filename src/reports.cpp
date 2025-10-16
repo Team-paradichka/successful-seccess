@@ -17,13 +17,13 @@ void printGroupAverage() {
     std::vector <Subject> subjects;
 
     for (const auto& student : students) {
-        subjects.insert(subjects.begin(), student.subjects.begin(), student.subjects.end());
+        subjects.insert(subjects.end(), student.subjects.begin(), student.subjects.end());
     }
 
     double groupAverage = calculateAverageScore(subjects);
 
     if (std::abs(groupAverage) < 1e-3) {
-        std::cout << "Noone has a grade.\n";
+        std::cout << "None has a grade.\n";
         return;
     }
 
