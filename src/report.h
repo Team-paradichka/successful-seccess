@@ -3,12 +3,14 @@
 
 extern StudentDatabase db;
 
+
 // Файл який містить функції які відносяться до звітів
 // Тут ви оголошуєте функції які будуть використовуватись для створення звітів
 // Приклад оголошення функції void GenerateReport();
 // Зауважте що реалізація цих функцій буде в окремому файлі src/report.cpp
 
 //TODO Task 5 Print My Grades
+void printMyGrades();
 
 //TODO: Task 6 Print student Grades
 
