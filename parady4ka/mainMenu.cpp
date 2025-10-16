@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void main_menu()
+void mainMenu()
 {
     cout << "Welcome to ProStudentHelper!\nTo continue please choose one of the following options:" << endl;
     cout << "1 - Continue as a student\n2 - Continue as a teacher\n0 - Quit the program" << endl;
@@ -19,7 +19,7 @@ void main_menu()
             abort();
         default:
             cout << "Please, choose an apropriate option." << endl;
-            main_menu();
+            mainMenu();
     }
     
 }
