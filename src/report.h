@@ -21,6 +21,7 @@ extern StudentDatabase db;
 //TODO: Task 11 Print Group Averages
 
 void printGroupAverage();
+double calculateAverageScore(const std::vector<Subject>& subjects);
 
 //TODO: Task 12 Find AND Print Scholarship Students
 
