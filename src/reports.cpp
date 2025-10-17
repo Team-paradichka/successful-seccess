@@ -1,8 +1,94 @@
 #include "report.h"
-#include <iomanip>
+#include "db.h"
+#include <iostream>
+#include <vector>
+#include <iomanip> 
+#include <cmath>
 
 using namespace std;
 
+void get_scholarship_student() {
+    vector<Student> scholarship;
+    int count = 0;
+    double highavgscore = 70.0;
+    const std::vector<Student>& students = db.getAllStudents();
+    for (const Student& s : students) {
+        double avg = calculateStudentAverage(s);
+        if(avg >= highavgscore) {
+            count++;
+            std::cout << "Student: " << s.name << endl;
+            scholarship.push_back(s);
+            std::cout << "Average score: " << avg << endl;
+        }
+    }
+    if (count <= 0) {
+    std::cout << "There are no students who will have a scholarship." << endl;
+    }
+}
+
+void printMyGrades() {
+    auto me = db.getAllStudents()[0];
+
+    std::cout << "Grades for " << me.name << ":\n";
+    for (const auto& subject : me.subjects) {
+        std::cout << subject.name << ": ";
+        if (subject.scores.empty()) {
+            std::cout << "no grades\n";
+        } else {
+            for (int score : subject.scores)
+                std::cout << score << " ";
+            std::cout << "\n";
+        }
+    }
+}
+
+void printGroupAverage() {
+    const auto& students = db.getAllStudents();
+
+    if (students.empty()) {
+        std::cout << "There is no students in database.\n";
+        return;
+    }
+
+    std::vector <Subject> subjects;
+
+    for (const auto& student : students) {
+        subjects.insert(subjects.end(), student.subjects.begin(), student.subjects.end());
+    }
+
+    double groupAverage = calculateAverageScore(subjects);
+
+    if (std::abs(groupAverage) < 1e-3) {
+        std::cout << "None has a grade.\n";
+        return;
+    }
+
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "Group average: " << groupAverage << std::endl;
+}
+
+// -----------------------------------------------------------
+// Task 8: Print All Students List
+// Мета: Створити загальний список групи для викладача.
+// Очікуваний результат: У консоль виводиться пронумерований список імен усіх студентів, що є в базі.
+// -----------------------------------------------------------
+
+void printAllStudentsList()
+{
+    const auto& students = db.getAllStudents();
+
+    if (students.empty())
+    {
+        std::cout << "\nThe student database is currently empty." << std::endl;
+    }
+    else
+    {
+        for (int i = 0; i < students.size(); i++)
+        {
+            std::cout << (i + 1) << ". " << students[i].name << std::endl;
+        }
+    }
+}
 // Реалізація функцій які відносяться до звітів буде тут
 // Наприклад, реалізація функції GenerateReport()
 // void GenerateReport() {

@@ -3,6 +3,8 @@
 
 extern StudentDatabase db;
 
+void printAllStudentsList();
+
 // Файл який містить функції які відносяться до звітів
 // Тут ви оголошуєте функції які будуть використовуватись для створення звітів
 // Приклад оголошення функції void GenerateReport();
@@ -15,10 +17,9 @@ void printStudentScores();
 
 
 //TODO Task 5 Print My Grades
+void printMyGrades();
 
 //TODO: Task 6 Print student Grades
-
-//TODO: Task 8 Print All Students List
 
 //TODO: Task 9 Calculate student Average
 
@@ -26,8 +27,11 @@ void printStudentScores();
 
 //TODO: Task 11 Print Group Averages
 
-//TODO: Task 12 Find AND Print Scholarship Students
+void printGroupAverage();
+double calculateAverageScore(const std::vector<Subject>& subjects);
 
+//TODO: Task 12 Find AND Print Scholarship Students
+void get_scholarship_student();
 //TODO Task 13 Find And Print Honor Students List
 
 //TODO Task 14 Find And Print Expulsion List
