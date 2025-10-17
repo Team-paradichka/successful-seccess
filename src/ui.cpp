@@ -6,6 +6,40 @@
 #include <sstream>
 using namespace std;
 
+
+// Реалізація функцій інтерфейсу програми буде тут
+// Наприклад, реалізація функції ShowMenu()
+// void ShowMenu() {
+//     std::cout << "Hello!" << std::endl;
+// };
+// зауважте що тип який повертає функція, аргументи які вона приймає, і її імʼя мають відповідати оголошенню в ui.h
+
+
+void studentMenu() {
+    int choise;
+    do {
+        std::cout << "\nChoose an option as a Student:\n";
+        std::cout << "1 - Show all my grades\n";
+        std::cout << "2 - Add a new score\n"; 
+        std::cout << "0 - Back to main menu\n";
+        std::cin >> choise;
+        if (choise == 1) {
+            printMyGrades();
+        }
+        else if (choise == 2) {  
+            AddScore();
+        }
+        else if (choise == 0) {
+            mainMenu();
+            break;
+        }
+        else { 
+            std::cout << "Choose a valid option.\n";
+        }
+    } while (choise != 0); //Цикл працює поки користувач не вийде в меню входу
+    
+}
+
 void showTeacherMenu() {
     int choice = 0;
 
@@ -153,3 +187,4 @@ void addScoreMenu() {
     s->subjects[subChoice - 1].scores.push_back(score);
     cout << "Score added successfully!\n";
 }
+

@@ -13,6 +13,7 @@ void AddScore(StudentDatabase& db);
 //TODO: Task 1 Main Menu
 
 //TODO: Task 2 Student Menu
+void studentMenu();
 
 //TODO: Task 3 Teacher Menu
 void showTeacherMenu();
