@@ -3,6 +3,8 @@
 
 extern StudentDatabase db;
 
+void printStudentAverage();
+
 void printAllStudentsList();
 
 // Файл який містить функції які відносяться до звітів
