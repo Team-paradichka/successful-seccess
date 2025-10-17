@@ -11,7 +11,7 @@ extern StudentDatabase db;
 
 
 //TODO Task 2 Print grades of any student
-void printStudentScores( const std::string& studentName);
+void printStudentScores();
 
 
 //TODO Task 5 Print My Grades
