@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include "src/db.h"
+#include "src/ui.h"
 
 StudentDatabase db;
 
