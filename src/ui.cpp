@@ -1,19 +1,13 @@
 #include "ui.h"
-
+#include <iostream>
+#include <string>
+#include <vector>
+#include "db.h" 
+#include <sstream>
 using namespace std;
 
-// Реалізація функцій інтерфейсу програми буде тут
-// Наприклад, реалізація функції ShowMenu()
-// void ShowMenu() {
-//     std::cout << "Hello!" << std::endl;
-// };
-// зауважте що тип який повертає функція, аргументи які вона приймає, і її імʼя мають відповідати оголошенню в ui.h
 
-#include "db.h" 
-#include <sstream> // Підключаємо бібліотеку для роботи з потоками рядків
-
-
-void AddScore(StudentDatabase& db) { // Функція для додавання оцінок, приймає базу даних за посиланням
+void AddScore() { // Функція для додавання оцінок, приймає базу даних за посиланням
     string studentName; 
     cout << "Enter student name: "; 
     getline(cin, studentName); 
@@ -60,4 +54,45 @@ void AddScore(StudentDatabase& db) { // Функція для додавання
     }
     
     cout << "Added " << count << " scores to " << subjectName << "\n"; 
+
+void addScoreMenu() {
+    cout << "--- Add Score to Student ---\n";
+    string name;
+    cout << "Enter student name: ";
+    getline(cin, name);
+
+    Student* s = findStudentByName(name);
+    if (!s) {
+        cout << "Error: student not found!\n";
+        return;
+    }
+
+    if (s->subjects.empty()) {
+        s->subjects.push_back({"Mathematics"});
+        s->subjects.push_back({"Physics"});
+        s->subjects.push_back({"Chemistry"});
+    }
+
+    cout << "Available subjects:\n";
+    for (size_t i = 0; i < s->subjects.size(); i++) {
+        cout << i + 1 << ". " << s->subjects[i].name << endl;
+    }
+
+    int subChoice;
+    cout << "Choose subject number: ";
+    cin >> subChoice;
+    cin.ignore();
+
+    if (subChoice < 1 || subChoice > (int)s->subjects.size()) {
+        cout << "Invalid choice!\n";
+        return;
+    }
+
+    int score;
+    cout << "Enter score: ";
+    cin >> score;
+    cin.ignore();
+
+    s->subjects[subChoice - 1].scores.push_back(score);
+    cout << "Score added successfully!\n";
 }
