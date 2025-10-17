@@ -11,7 +11,7 @@ using namespace std;
 // зауважте що тип який повертає функція, аргументи які вона приймає, і її імʼя мають відповідати оголошенню в report.h
 
 
-void printStudentScores(const std::string& studentName, StudentDatabase& db) {
+void printStudentScores(const std::string& studentName) {
   Student* student = db.findStudentByName(studentName);
 
   if (student == nullptr) {
