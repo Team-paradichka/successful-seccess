@@ -7,7 +7,7 @@ extern StudentDatabase db;
 // Тут ви оголошуєте функції які будуть використовуватись для створення звітів
 // Приклад оголошення функції void GenerateReport();
 // Зауважте що реалізація цих функцій буде в окремому файлі src/report.cpp
-
+double calculateAverageScore(const std::vector<Subject>& subjects);
 //TODO Task 5 Print My Grades
 
 //TODO: Task 6 Print student Grades
@@ -25,3 +25,5 @@ extern StudentDatabase db;
 //TODO Task 13 Find And Print Honor Students List
 
 //TODO Task 14 Find And Print Expulsion List
+
+void printBestAndWorstStudents();
