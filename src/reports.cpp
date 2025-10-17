@@ -37,7 +37,7 @@ void printExpulsionList() {
 
     for (const auto& student : db.getAllStudents()) {
         double avgScore = calculateAverageScore(student.subjects);
-        if (avgScore > 0 && avgScore < 50.0f) {
+        if (avgScore < 50.0f) {
             expulsion_candidates.push_back(student);
         }
     }
