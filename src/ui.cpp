@@ -27,7 +27,7 @@ void showTeacherMenu() {
             printStudentScores();          
             break;
         case 2:
-            printAllStudents();
+            printAllStudentsList();
             break;
         case 3:
             addStudentMenu();               
