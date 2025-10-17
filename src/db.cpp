@@ -1,4 +1,6 @@
 #include "db.h"
+#include <algorithm>
+#include <cctype>
 
 const std::vector<std::string> SUBJECT_NAMES = {
     "Math", "Science", "History", "Art", "Physical Education"
@@ -15,8 +17,10 @@ int Student::addScore(const std::string& subjectName, int score) {
 }
 
 void StudentDatabase::addNewStudent(const std::string& name) {
+    std::string lowered_name = name;
+    std::transform(lowered_name.begin(), lowered_name.end(), lowered_name.begin(), [](unsigned char c){ return std::tolower(c); });
     Student new_student;
-    new_student.name = name;
+    new_student.name = lowered_name;
 
     for (const auto& subjectName : SUBJECT_NAMES) {
         Subject subject;
@@ -27,8 +31,10 @@ void StudentDatabase::addNewStudent(const std::string& name) {
 }
 
 Student* StudentDatabase::findStudentByName(const std::string& name) {
+    std::string lowered_name = name;
+    std::transform(lowered_name.begin(), lowered_name.end(), lowered_name.begin(), [](unsigned char c){ return std::tolower(c); });
     for (auto& student : students_) {
-        if (student.name == name) {
+        if (student.name == lowered_name) {
             return &student;
         }
     }
