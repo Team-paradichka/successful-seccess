@@ -1,6 +1,35 @@
 #include "report.h"
+#include <iostream>
+#include <iomanip> 
+#include <vector>
+#include <cmath>
 
-using namespace std;
+extern StudentDatabase db;
+
+void printGroupAverage() {
+    const auto& students = db.getAllStudents();
+
+    if (students.empty()) {
+        std::cout << "There is no students in database.\n";
+        return;
+    }
+
+    std::vector <Subject> subjects;
+
+    for (const auto& student : students) {
+        subjects.insert(subjects.end(), student.subjects.begin(), student.subjects.end());
+    }
+
+    double groupAverage = calculateAverageScore(subjects);
+
+    if (std::abs(groupAverage) < 1e-3) {
+        std::cout << "None has a grade.\n";
+        return;
+    }
+
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "Group average: " << groupAverage << std::endl;
+}
 
 // -----------------------------------------------------------
 // Task 8: Print All Students List
@@ -30,4 +59,5 @@ void printAllStudentsList()
 //     std::cout << "Report generated!" << std::endl;
 // };
 // зауважте що тип який повертає функція, аргументи які вона приймає, і її імʼя мають відповідати оголошенню в report.h
+
 
