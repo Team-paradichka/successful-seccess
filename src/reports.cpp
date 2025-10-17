@@ -1,21 +1,13 @@
 #include "report.h"
 
 using namespace std;
-
-#include "db.h"
 #include <iostream>
 
-void printMyGrades(StudentDatabase& db) {
-    const std::string myName = "Mark"; // твій студент
+void printMyGrades() {
+    auto me = db.getAllStudents()[0];
 
-    Student* me = db.findStudentByName(myName);
-    if (!me) {
-        std::cout << "Student not found!\n";
-        return;
-    }
-
-    std::cout << "Grades for " << myName << ":\n";
-    for (const auto& subject : me->subjects) {
+    std::cout << "Grades for " << me.name << ":\n";
+    for (const auto& subject : me.subjects) {
         std::cout << subject.name << ": ";
         if (subject.scores.empty()) {
             std::cout << "no grades\n";
