@@ -11,7 +11,7 @@ using namespace std;
 void printStudentAverage() {
     std::string name;
     std::cout << "Enter student name: ";
-    std::getline(std::cin >> std::ws, name);
+    std::cin >> name;
 
     Student* student = db.findStudentByName(name);
 
@@ -54,19 +54,11 @@ void printExpulsionList() {
  cout << "-------------------------------------------\n";
 }
 
-#include "db.h"
-#include <iostream>
-#include <vector>
-#include <iomanip> 
-#include <cmath>
-
-using namespace std;
-
 void printHonorStudents(){
     cout << "============ Honor Students ============" << endl;
 
     for(const auto& student : db.getAllStudents()){
-        double average_score = calculateAverageScore(const std::vector<Subject>& subjects);
+        double average_score = calculateAverageScore(student.subjects);
 
         if (average_score >= 88.0){
                 cout << student.name << ". Average score: " << average_score << endl;
@@ -100,7 +92,7 @@ void get_scholarship_student() {
     double highavgscore = 70.0;
     const std::vector<Student>& students = db.getAllStudents();
     for (const Student& s : students) {
-        double avg = calculateStudentAverage(s);
+        double avg = calculateAverageScore(s.subjects);
         if(avg >= highavgscore) {
             count++;
             std::cout << "Student: " << s.name << endl;

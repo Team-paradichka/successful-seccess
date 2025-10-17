@@ -2,7 +2,7 @@
 #include "db.h"
 
 extern StudentDatabase db;
-void AddScore(StudentDatabase& db);
+void AddScore(const std::string &studentName);
 
 
 // Файл який містить функції які відносяться до інтерфейсу програми
