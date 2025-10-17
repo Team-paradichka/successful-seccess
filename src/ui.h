@@ -11,6 +11,7 @@ void AddScore(StudentDatabase& db);
 // Зауважте що реалізація цих функцій буде в окремому файлі src/ui.cpp
 
 //TODO: Task 1 Main Menu
+void mainMenu();
 
 //TODO: Task 2 Student Menu
 void studentMenu();
