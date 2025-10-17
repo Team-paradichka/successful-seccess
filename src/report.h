@@ -3,6 +3,8 @@
 
 extern StudentDatabase db;
 
+void printAllStudentsList();
+
 // Файл який містить функції які відносяться до звітів
 // Тут ви оголошуєте функції які будуть використовуватись для створення звітів
 // Приклад оголошення функції void GenerateReport();
@@ -11,8 +13,6 @@ extern StudentDatabase db;
 //TODO Task 5 Print My Grades
 
 //TODO: Task 6 Print student Grades
-
-//TODO: Task 8 Print All Students List
 
 //TODO: Task 9 Calculate student Average
 
