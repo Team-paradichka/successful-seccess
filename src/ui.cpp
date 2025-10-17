@@ -2,73 +2,58 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include "db.h" 
+#include <sstream>
 using namespace std;
 
-struct Subject {
-    string name;
-    vector<int> scores;
-};
 
-struct Student {
-    string name;
-    vector<Subject> subjects;
-};
-
-vector<Student> students;
-
-Student* findStudentByName(const string& name) {
-    for (auto& s : students) {
-        if (s.name == name)
-            return &s;
+void AddScore() { // Функція для додавання оцінок, приймає базу даних за посиланням
+    string studentName; 
+    cout << "Enter student name: "; 
+    getline(cin, studentName); 
+    
+    Student* student = db.findStudentByName(studentName); // Шукаємо студента в базі даних за іменем
+    if (student == nullptr) { 
+        cout << "Student not found!\n"; 
+        return; 
     }
-    return nullptr;
-}
-
-void showMainMenu() {
-    while (true) {
-        cout << "\n=== STUDENT MANAGEMENT SYSTEM ===\n";
-        cout << "1. Add Student\n";
-        cout << "2. Add Score to Student\n"; 
-        cout << "3. List All Students\n";
-        cout << "0. Exit\n";
-        cout << "Choose an option: ";
-
-        int choice;
-        cin >> choice;
-        cin.ignore();
-
-        switch (choice) {
-            case 1:
-                addStudentMenu();
-                break;
-            case 2:
-                addScoreMenu();
-                break;
-            case 3:
-                listStudentsMenu();
-                break;
-            case 0:
-                cout << "Goodbye!\n";
-                return;
-            default:
-                cout << "Invalid option! Please try again.\n";
+    
+    
+    cout << "\nSelect subject:\n"; 
+    for (size_t i = 0; i < SUBJECT_NAMES.size(); ++i) { 
+        cout << i + 1 << " - " << SUBJECT_NAMES[i] << "\n"; 
+    }
+    
+    int choice; 
+    cout << "Your choice: "; 
+    cin >> choice; 
+    cin.ignore(); // Очищуємо буфер від символу нового рядка після числа
+    
+    if (choice < 1 || choice > static_cast<int>(SUBJECT_NAMES.size())) { 
+        cout << "Invalid choice!\n"; 
+        return; 
+    }
+    
+    string subjectName = SUBJECT_NAMES[choice - 1]; 
+    
+    // Вводимо оцінки
+    cout << "Enter scores (separated by space): "; 
+    string scoresLine; 
+    getline(cin, scoresLine); 
+    
+    istringstream iss(scoresLine); 
+    int score; 
+    int count = 0; 
+    
+    while (iss >> score) { // Читаємо кожне число з потоку по черзі
+        if (student->addScore(subjectName, score) == 0) { 
+            count++; 
+        } else { 
+            cout << "Error adding score: " << score << "\n"; 
         }
     }
-}
-
-void addStudentMenu() {
-    cout << "--- Add New Student ---\n";
-    string name;
-    cout << "Enter student name: ";
-    getline(cin, name);
-
-    Student s;
-    s.name = name;
-    students.push_back(s);
-
-    cout << "Student '" << name << "' added successfully!\n";
-}
+    
+    cout << "Added " << count << " scores to " << subjectName << "\n"; 
 
 void addScoreMenu() {
     cout << "--- Add Score to Student ---\n";
@@ -110,31 +95,4 @@ void addScoreMenu() {
 
     s->subjects[subChoice - 1].scores.push_back(score);
     cout << "Score added successfully!\n";
-}
-
-void listStudentsMenu() {
-    cout << "--- Students List ---\n";
-    if (students.empty()) {
-        cout << "No students found.\n";
-        return;
-    }
-    
-    for (const auto& s : students) {
-        cout << "Student: " << s.name << "\n";
-        if (!s.subjects.empty()) {
-            for (const auto& sub : s.subjects) {
-                cout << "  " << sub.name << " scores: ";
-                if (sub.scores.empty()) {
-                    cout << "No scores";
-                } else {
-                    for (int sc : sub.scores)
-                        cout << sc << " ";
-                }
-                cout << endl;
-            }
-        } else {
-            cout << "  No subjects/scores\n";
-        }
-        cout << "------------------------\n";
-    }
 }

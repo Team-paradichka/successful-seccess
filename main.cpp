@@ -6,6 +6,7 @@
 #include "src/db.h"
 #include "src/ui.h"
 
+
 StudentDatabase db;
 
 using namespace std;
