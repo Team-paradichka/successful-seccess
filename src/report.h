@@ -37,3 +37,5 @@ void printHonorStudents();
 
 
 //TODO Task 14 Find And Print Expulsion List
+
+void printExpulsionList();
