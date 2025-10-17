@@ -22,7 +22,7 @@ void printMyGrades();
 //TODO: Task 6 Print student Grades
 
 //TODO: Task 9 Calculate student Average
-
+double calculateAverageScore(const std::vector<Subject>& subjects);
 //TODO: Task 10 Print student Average
 
 //TODO: Task 11 Print Group Averages
