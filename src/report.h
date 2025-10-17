@@ -25,7 +25,7 @@ void printGroupAverage();
 double calculateAverageScore(const std::vector<Subject>& subjects);
 
 //TODO: Task 12 Find AND Print Scholarship Students
-
+void get_scholarship_student();
 //TODO Task 13 Find And Print Honor Students List
 
 //TODO Task 14 Find And Print Expulsion List
