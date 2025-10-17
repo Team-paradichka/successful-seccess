@@ -12,11 +12,8 @@ void printAllStudentsList();
 // Приклад оголошення функції void GenerateReport();
 // Зауважте що реалізація цих функцій буде в окремому файлі src/report.cpp
 
-
-
 //TODO Task 2 Print grades of any student
 void printStudentScores();
-
 
 //TODO Task 5 Print My Grades
 void printMyGrades();
@@ -39,5 +36,10 @@ void printHonorStudents();
 
 
 //TODO Task 14 Find And Print Expulsion List
+
+
+//TODO Task 14 Find And Print Expulsion List
+
+void printBestAndWorstStudents();
 
 void printExpulsionList();
