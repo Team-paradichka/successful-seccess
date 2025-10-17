@@ -4,7 +4,23 @@
 #include <vector>
 #include <cmath>
 
-extern StudentDatabase db;
+using namespace std;
+
+void printMyGrades() {
+    auto me = db.getAllStudents()[0];
+
+    std::cout << "Grades for " << me.name << ":\n";
+    for (const auto& subject : me.subjects) {
+        std::cout << subject.name << ": ";
+        if (subject.scores.empty()) {
+            std::cout << "no grades\n";
+        } else {
+            for (int score : subject.scores)
+                std::cout << score << " ";
+            std::cout << "\n";
+        }
+    }
+}
 
 void printGroupAverage() {
     const auto& students = db.getAllStudents();
